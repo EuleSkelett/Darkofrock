@@ -33,8 +33,6 @@ public class PlayerController {
         else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
             playerBounds.rotate(-rotateSpeed * GameScreen.deltaCff);
 
-
-
         playerMovement();
 
 
@@ -44,10 +42,6 @@ public class PlayerController {
                 playerBounds.getY() + MathUtils.sinDeg(playerBounds.getRotation() + 90) * playerSpeed * GameScreen.deltaCff);
     }
 
-    private void playerSideMovement(){
-        playerBounds.setPosition(playerBounds.getX() + MathUtils.cosDeg(playerBounds.getRotation() ) * playerSpeed * GameScreen.deltaCff,
-                playerBounds.getY() + MathUtils.sinDeg(playerBounds.getRotation() ) * playerSpeed * GameScreen.deltaCff);
-    }
     // гасим скорость
     private void quenchSpeed() {
         if (playerSpeed > velosity* GameScreen.deltaCff)

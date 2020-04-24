@@ -13,10 +13,11 @@ public class Main extends Game {
 
 	@Override
 	public void create() {
+
 		assets = new Assets();
 		gameScreen = new GameScreen();
 		((GameScreen)gameScreen).setTextureAtlas(assets.getManager().get("atlas1.atlas", TextureAtlas.class));
-		setScreen(gameScreen);
+		setScreen(new MenuScreen(this));
 	}
 
 	@Override
