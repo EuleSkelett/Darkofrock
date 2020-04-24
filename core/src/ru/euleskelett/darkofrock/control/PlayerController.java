@@ -9,8 +9,8 @@ import com.badlogic.gdx.math.Polygon;
 import ru.euleskelett.darkofrock.view.GameScreen;
 
 public class PlayerController {
-    private float playerSpeed, velosity = 30f, speedMax = 30f;
-
+    private float playerSpeed, velosity = 5f, speedMax = 5f;
+    private float rotateSpeed = 500f;
     private Polygon playerBounds;
     public PlayerController(Polygon playerBounds){
         this.playerBounds = playerBounds;
@@ -18,16 +18,6 @@ public class PlayerController {
 // все что связанно со скоростью
     public void handle(){
         // движение вперед назад
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
-            playerSpeed -= velosity* GameScreen.deltaCff;
-        else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
-            playerSpeed += velosity* GameScreen.deltaCff;
-        else
-            quenchSpeed();
-
-        playerSideMovement();
-
-
         if (Gdx.input.isKeyPressed(Input.Keys.UP))
             playerSpeed += velosity* GameScreen.deltaCff;
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN))
@@ -35,8 +25,18 @@ public class PlayerController {
         else
             quenchSpeed();
         //
-        playerMovement();
+
         playerSpeed = sliceSpeed();
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+            playerBounds.rotate(rotateSpeed * GameScreen.deltaCff);
+        else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+            playerBounds.rotate(-rotateSpeed * GameScreen.deltaCff);
+
+
+
+        playerMovement();
+
 
     }
     private  void playerMovement(){

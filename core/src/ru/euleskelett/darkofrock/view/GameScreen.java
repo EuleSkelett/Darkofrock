@@ -25,7 +25,7 @@ public class GameScreen implements Screen {
     @Override
     public void show() {
         batch = new SpriteBatch();
-        player = new Player(textureAtlas.findRegion("1"), 0, 0, 1f, 1f * 2.5f);
+        player = new Player(textureAtlas.findRegion("downPlayer1"), 0, 0, 1f, 1f );
         ui = new UI();
     }
 
